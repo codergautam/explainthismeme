@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExplainThisMeme</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ExplainThisMeme</h1>
+        <form id="upload-form" enctype="multipart/form-data">
+            <label for="meme-image">Upload Your Meme:</label>
+            <input type="file" id="meme-image" accept="image/*" required>
+            <label for="explain">Explain?</label>
+            <input type="checkbox" id="explain" name="explain">
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result" class="hidden">
+            <h2>AI Explanation:</h2>
+            <p id="explanation"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

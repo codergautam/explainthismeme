@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const { OpenAIApi } = require('openai');
+const { OpenAI } = require('openai');
 
 require('dotenv').config();
 
@@ -12,11 +12,14 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 // Initialize OpenAI
-const openai = new OpenAIApi({ key: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ key: process.env.OPENAI_API_KEY });
+
+app.use(express.static('dist'))
 
 // Define the main route for uploading and explaining memes
 app.post('/explainthismeme', upload.single('meme'), async (req, res) => {
   try {
+    console.log(req.file, req.files)
     const imageBuffer = req.file.buffer.toString('base64');
 
     // Create a message for OpenAI's GPT-4 model
